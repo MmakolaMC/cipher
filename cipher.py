@@ -1,4 +1,6 @@
 class Secret:
+
+    # Constructor
     def __init__(self, key, message):
         
         self.key = key
@@ -6,7 +8,8 @@ class Secret:
         self.dict_1 = {}
         self.dict_2 = {}
         self.new_message = ''
-        
+    
+    # Create dicts => method
     def dictionaries(self):
         
         import string
@@ -14,12 +17,15 @@ class Secret:
         if self.key == 0:
             return self.message
         
+        # Add alphabets and postitions to dicts
         for i, letter in enumerate(string.ascii_lowercase):
             self.dict_1[letter] = i
             self.dict_2[i] = letter
-            
+    
         return self.dict_1, self.dict_2
     
+    
+    # Decrypt message => method
     def encrypt(self):
         
         for i in self.message:
@@ -37,6 +43,8 @@ class Secret:
                 
         return self.new_message
     
+
+    # Decrypt message => method
     def decrypt(self):
         
         for i in self.message:
