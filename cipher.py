@@ -1,7 +1,7 @@
 class Secret:
 
     # Constructor
-    def __init__(self, key, message):
+    def __init__(self, key: int, message: str):
         
         self.key = key
         self.message = message
@@ -65,8 +65,10 @@ class Secret:
 
 if __name__ == '__main__':
     message = input('Enter message: ')
-    key = int(input('Enter number: '))
+    key = int(input('Enter encryption or decryption key: '))
     action = input('Do you want to encrypt(e) or decrypt(d)? ')
+    if type(key) != int or type(message) != str or type(action) != str:
+        raise Exception ('Key must be of type int and Message must be of type str/object')
     cipher = Secret(key, message)
     if action.lower() == 'encrypt' or action.lower() == 'e':
         print(cipher.encrypt())
