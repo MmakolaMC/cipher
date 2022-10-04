@@ -3,12 +3,10 @@ class Secret:
     # Constructor
     def __init__(self, key: int, message: str):
         
-        # Valicate arguments
-        assert type(key) == int, f'Key {key} is not of type int'
-        assert type(message) == str, f'Message {message} is not of type str/object'
-        
+        assert message.isalpha(), f'Message {message} contains non-alphabet character(s).'
+
         # Assign to self object
-        self.key = key
+        self.key = key + 1
         self.action = action
         self.message = message
         self.dict_1 = {}
@@ -73,7 +71,7 @@ if __name__ == '__main__':
     message = input('Enter message: ')
     key = int(input('Enter encryption or decryption key: '))
     action = input('Do you want to encrypt(e) or decrypt(d)? ')
-    assert type(action) == str, f'Action {action} is not of type str/object'
+    assert action == 'e' or action == 'encrypt' or action == 'd' or action == 'decrypt', 'Action not equal to "e" or "encrypt" or "d" or "decrypt"'
     cipher = Secret(key, message)
     if action.lower() == 'encrypt' or action.lower() == 'e':
         print(cipher.encrypt())
